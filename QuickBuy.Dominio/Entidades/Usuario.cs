@@ -10,9 +10,9 @@ namespace QuickBuy.Dominio.Entidades
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
         /// <summary>
-        /// Usuario pode ter 1 ou muitos pedidos.
+        /// Usuario pode ter NENHUM ou muitos pedidos.
         /// </summary>
-        public ICollection<Pedido> Pedidos { get; set; }
+        public virtual ICollection<Pedido> Pedidos { get; set; }
 
         public override void Validate()
         {

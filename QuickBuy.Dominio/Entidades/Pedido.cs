@@ -10,6 +10,7 @@ namespace QuickBuy.Dominio.Entidades
         public int Id { get; set; }
         public DateTime DataPedido  { get; set; }
         public int UsuarioId { get; set; }
+        public virtual Usuario Usuario { get; set; }
         public DateTime DataPrevisaoEntrega { get; set; }
         public string CEP { get; set; }
         public string Estado { get; set; }
@@ -18,11 +19,11 @@ namespace QuickBuy.Dominio.Entidades
         public int NumeroEndereco { get; set; }
         public int FormaPagamentoId { get; set; }
 
-        public  FormaPagamento FormaPagamento { get; set; }
+        public virtual FormaPagamento FormaPagamento { get; set; }
         /// <summary>
         /// Pedido deve ter pelo menos 1 item de pedido ou muitos itens de pedidos
         /// </summary>
-        public ICollection<ItemPedido> ItensPedido { get; set; }
+        public virtual ICollection<ItemPedido> ItensPedido { get; set; }
 
         public override void Validate()
         {
