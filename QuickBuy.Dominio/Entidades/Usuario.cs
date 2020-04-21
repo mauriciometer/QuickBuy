@@ -23,6 +23,7 @@ namespace QuickBuy.Dominio.Entidades
 
             if (string.IsNullOrEmpty(Senha))
                 AdicionarCritica("Senha não foi informada");
+
         }
     }
 }
