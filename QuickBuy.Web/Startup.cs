@@ -39,6 +39,7 @@ namespace QuickBuy.Web
 
             //instancia as entidades do projeto
             _ = services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+            _ = services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
