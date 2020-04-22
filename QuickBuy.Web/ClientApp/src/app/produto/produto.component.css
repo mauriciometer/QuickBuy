@@ -1,0 +1,16 @@
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "Escolher";
+}
+
+.titulo{
+    color: #666;
+}
+
+.invalid-feedback {
+  display: block;
+}
+
+
+.valid-feedback {
+  display: block;
+}

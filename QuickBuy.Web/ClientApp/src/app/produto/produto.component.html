@@ -1,0 +1,61 @@
+<h1 class="h4 titulo">
+  Cadastro de Produtos
+</h1>
+<label for="inputNome" class="sr-only">Nome</label>
+<input type="text"
+       id="inputNome"
+       name="nomeProduto"
+       placeholder="Nome do produto"
+       class="form-control mb-2 col-md-4"
+       [ngClass]=""
+       [(ngModel)]="produto.Nome"
+       #nome="ngModel"
+       required />
+<div class="invalid-feedback mb-2" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+  <div *ngIf="nome.errors.required">
+    Nome do produto é de preenchimento obrigatório
+  </div>
+</div>
+
+<label for="inputDescricao" class="sr-only">Descrição do produto</label>
+<input type="text"
+       id="inputDescricao"
+       name="descricaoProduto"
+       placeholder="Descricao do produto"
+       class="form-control mb-2 col-md-5"
+       [ngClass]=""
+       [(ngModel)]="produto.Descricao"
+       #descricao="ngModel"
+       required />
+<div class="invalid-feedback mb-2" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
+  <div *ngIf="descricao.errors.required">
+    Descricao do produto é de preenchimento obrigatório
+  </div>
+</div>
+
+<label for="inputPreco" class="sr-only">Preço do produto</label>
+<input type="number"
+       id="inputPreco"
+       name="precoProduto"
+       placeholder="Preço do produto"
+       class="form-control mb-2 col-md-3"
+       [ngClass]=""
+       [(ngModel)]="produto.Preco"
+       #preco="ngModel"
+       required />
+<div class="invalid-feedback mb-2" *ngIf="preco.invalid && (preco.dirty || preco.touched)">
+  <div *ngIf="preco.errors.required">
+    Preço do produto é de preenchimento obrigatório
+  </div>
+</div>
+
+
+<div class="input-group">
+  <div class="custom-file mb-2 col-md-5">
+    <input type="file" class="custom-file-input" id="inputFile" />
+    <label for="inputFile" class="custom-file-label">Escolher uma foto</label>
+  </div>
+</div>
+
+<button class="btn btn-primary" (click)="cadastrar">Cadastrar</button>
+

@@ -10,6 +10,8 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { UsuarioServico } from './servicos/usuario/usuario.servico';
 import { LoginComponent } from './usuario/login/login.component';
+import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.component';
+import { ProdutoServico } from './servicos/produto/produto.servico';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { LoginComponent } from './usuario/login/login.component';
     NavMenuComponent,
     HomeComponent,
     ProdutoComponent,
-    LoginComponent
+    LoginComponent,
+    CadastroUsuarioComponent
   ],
 
   imports: [
@@ -26,12 +29,14 @@ import { LoginComponent } from './usuario/login/login.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'produto', component: ProdutoComponent, canActivate: [GuardaRotas] },
-      { path: 'entrar', component: LoginComponent }
+      //{ path: 'produto', component: ProdutoComponent, canActivate: [GuardaRotas] },
+      { path: 'produto', component: ProdutoComponent },
+      { path: 'entrar', component: LoginComponent },
+      { path: 'novo-usuario', component: CadastroUsuarioComponent }
     ])
   ],
 
-  providers: [UsuarioServico],
+  providers: [UsuarioServico,ProdutoServico],
   bootstrap: [AppComponent]
 })
 
