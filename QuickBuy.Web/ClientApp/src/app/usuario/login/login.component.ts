@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   entrar() {
 
     this.ativar_Spinner = true;
+    this.mensagem = "";
     //forma de implementar uma chamada a um metodo que retorna um Observable
     this.usuarioServico.verificarUsuario(this.usuario)
       .subscribe(

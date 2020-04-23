@@ -109,6 +109,9 @@
     <div class="alert alert-danger" *ngIf="mensagem">
       {{ mensagem }}
     </div>
+    <div class="alert alert-success" *ngIf="usuarioCadastrado">
+      Usuário cadastrado com sucesso!<a class="alert-link" [routerLink]='["/entrar"]'> Clique aqui</a> para entrar no sistema com a sua conta.
+    </div>
     <img src="../../../assets/img/quick-b-logo.jpg" title="Imagem do src do projeto" />
   </form>
 </div>
