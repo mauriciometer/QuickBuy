@@ -23,7 +23,7 @@ export class ProdutoServico {
 
   public cadastrar(produto: Produto): Observable<Produto> {
 
-    return this.http.post<Produto>(this._baseUrl + "api/produto/cadastrar", JSON.stringify(produto), { headers: this.headers });
+    return this.http.post<Produto>(this._baseUrl + "api/produto", JSON.stringify(produto), { headers: this.headers });
   }
 
   public salvar(produto: Produto): Observable<Produto> {
@@ -31,9 +31,9 @@ export class ProdutoServico {
     return this.http.post<Produto>(this._baseUrl + "api/produto/", JSON.stringify(produto), { headers: this.headers });
   }
 
-  public deletar(produto: Produto): Observable<Produto> {
+  public deletar(produto: Produto): Observable<Produto[]> {
 
-    return this.http.post<Produto>(this._baseUrl + "api/produto/", JSON.stringify(produto), { headers: this.headers });
+    return this.http.post<Produto[]>(this._baseUrl + "api/produto/deletar", JSON.stringify(produto), { headers: this.headers });
   }
 
   public obterTodosProdutos(): Observable<Produto[]> {

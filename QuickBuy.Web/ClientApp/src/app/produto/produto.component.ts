@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core"
 import { Produto } from "../modelo/produto";
 import { ProdutoServico } from "../servicos/produto/produto.servico";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-produto",
@@ -11,13 +12,21 @@ export class ProdutoComponent implements OnInit {// Nome das classes começando 
   public produto: Produto;
   public arquivoSelecionado: File;
   public ativar_spinner: boolean;
+  public mensagem: string;
 
-  constructor(private produtoServico: ProdutoServico) {
+  constructor(private produtoServico: ProdutoServico, private router: Router) {
 
   }
 
   ngOnInit(): void {
-    this.produto = new Produto();
+    var produtoSession = sessionStorage.getItem('produtoSession')
+
+    if (produtoSession) {
+      this.produto = JSON.parse(produtoSession);
+    }
+    else {
+      this.produto = new Produto();
+    }
   }
 
   public inputChange(files: FileList) {
@@ -27,7 +36,7 @@ export class ProdutoComponent implements OnInit {// Nome das classes começando 
       .subscribe(
         nomeArquivo => {
           this.produto.nomeArquivo = nomeArquivo;
-          alert(this.produto.nomeArquivo);
+          
           console.log(nomeArquivo);
           this.ativar_spinner = false;
         },
@@ -41,15 +50,29 @@ export class ProdutoComponent implements OnInit {// Nome das classes começando 
 
   public cadastrar() {
 
-    //this.produtoServico.cadastrar(this.produto)
-    //  .subscribe(
-    //    produtoJson => {
-    //      console.log(produtoJson);
-    //    },
-    //    e => {
-    //      console.log(e.error);
-    //    }
-    //  );
+    this.ativarEspera();
+    this.produtoServico.cadastrar(this.produto)
+      .subscribe(
+        produtoJson => {
+          console.log(produtoJson);
+          this.desativarEspera();
+          this.router.navigate(['pesquisar-produto']);
+        },
+        e => {
+          console.log(e.error);
+          this.mensagem = e.error;
+          this.desativarEspera();
+        }
+      );
   }
+
+  public ativarEspera() {
+    this.ativar_spinner = true;
+  }
+
+  public desativarEspera() {
+    this.ativar_spinner = false;
+  }
+
   
 }

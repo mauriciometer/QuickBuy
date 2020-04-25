@@ -7,8 +7,11 @@
        name="nomeProduto"
        placeholder="Nome do produto"
        class="form-control mb-2 col-md-4"
-       [ngClass]=""
-       [(ngModel)]="produto.Nome"
+       [ngClass]="{
+            'is-invalid': nome.invalid && (nome.dirty || nome.touched),
+           'is-valid': nome.valid && (nome.dirty || nome.touched)
+           }"
+       [(ngModel)]="produto.nome"
        #nome="ngModel"
        required />
 <div class="invalid-feedback mb-2" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
@@ -23,8 +26,11 @@
        name="descricaoProduto"
        placeholder="Descricao do produto"
        class="form-control mb-2 col-md-5"
-       [ngClass]=""
-       [(ngModel)]="produto.Descricao"
+       [ngClass]="{
+            'is-invalid': descricao.invalid && (descricao.dirty || descricao.touched),
+           'is-valid': descricao.valid && (descricao.dirty || descricao.touched)
+           }"
+       [(ngModel)]="produto.descricao"
        #descricao="ngModel"
        required />
 <div class="invalid-feedback mb-2" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
@@ -39,8 +45,11 @@
        name="precoProduto"
        placeholder="Preço do produto"
        class="form-control mb-2 col-md-3"
-       [ngClass]=""
-       [(ngModel)]="produto.Preco"
+       [ngClass]="{
+            'is-invalid': preco.invalid && (preco.dirty || preco.touched),
+           'is-valid': preco.valid && (preco.dirty || preco.touched)
+           }"
+       [(ngModel)]="produto.preco"
        #preco="ngModel"
        required />
 <div class="invalid-feedback mb-2" *ngIf="preco.invalid && (preco.dirty || preco.touched)">
@@ -57,8 +66,16 @@
   </div>
 </div>
 
-<button class="btn btn-primary" (click)="cadastrar" [disabled]="ativar_spinner">
-  <span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>
-  Cadastrar
-</button>
+<div class="form-inline">
+  <button class="btn btn-primary" style="margin-right:4px;" (click)="cadastrar()" [disabled]="ativar_spinner">
+    <span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>
+    Cadastrar
+  </button>
+  <button class="btn btn-secondary" [routerLink]="['/pesquisar-produto']">Cancelar</button>
+</div>
+
+
+<div class="alert alert-danger col-md-4" *ngIf="mensagem">
+  Campos preenchidos inválidos : {{mensagem}}
+</div>
 
