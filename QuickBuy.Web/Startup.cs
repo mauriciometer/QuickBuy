@@ -18,7 +18,9 @@ namespace QuickBuy.Web
     {
 
         public IConfiguration Configuration { get; }
-        public Startup(IConfiguration configuration)
+        
+        //public Startup(IConfiguration configuration)
+        public Startup()
         {
             var builder = new ConfigurationBuilder();
             builder.AddJsonFile("config.json", optional:false, reloadOnChange: true);
