@@ -11,11 +11,11 @@
           <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
           </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-dark" [routerLink]='["/pesquisar-produto"]'>Produto</a> 
+          <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="usuario_administrador()">
+            <a class="nav-link text-dark" [routerLink]='["/pesquisar-produto"]'>Produto</a>
           </li>
           <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="!usuarioLogado()">
-            <a class="nav-link text-dark" [routerLink]='["/entrar"]'>Entrar</a> 
+            <a class="nav-link text-dark" [routerLink]='["/entrar"]'>Entrar</a>
           </li>
           <li class="nav-item dropdown" *ngIf="usuarioLogado()">
             <a class="nav-link dropdown-toggle text-dark"
@@ -30,8 +30,13 @@
               <li class="dropdown-item" role="menu" [routerLink]='["/"]' (click)="sair()">Sair</li>
             </ul>
           </li>
-  <!--<li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="usuarioLogado()">
-            <a class="nav-item nav-link text-dark" [routerLink]='[""]' (click)="sair()">Sair</a> 
+          <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="temItensCarrinhoCompras()">
+            <a class="nav-link text-dark" [routerLink]='["/loja-efetivar"]'>
+              <img src="assets/img/carrinho.png" style="width:32px;height:32px;" />
+            </a>
+          </li>
+          <!--<li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="usuarioLogado()">
+            <a class="nav-item nav-link text-dark" [routerLink]='[""]' (click)="sair()">Sair</a>
           </li>-->
 
 
