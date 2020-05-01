@@ -1,6 +1,7 @@
 import { Produto } from "../../modelo/produto";
 
 export class LojaCarrinhoCompras {
+
   public produtos: Produto[] = [];
 
   public adicionar(produto: Produto) {
@@ -41,6 +42,11 @@ export class LojaCarrinhoCompras {
     var itens = this.obterProdutos();
 
     return (itens.length > 0);
+  }
+
+  public limparCarrinhoComras() {
+
+    localStorage.setItem("produtoLocalStorage", "");
   }
 
 }
